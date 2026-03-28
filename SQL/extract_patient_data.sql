@@ -1,8 +1,12 @@
 SELECT
-    p.prename        AS `คํานําหน้า`,
+    p.prename        AS `คำนำหน้า`,
     p.fname          AS `ชื่อ`,
     p.lname          AS `นามสกุล`,
-    p.sex            AS `เพศ`,
+    CASE p.sex
+        WHEN 1 THEN 'Male'
+        WHEN 2 THEN 'Female'
+        ELSE 'Unknown'
+    END AS `เพศ`,
     RIGHT(p.birth,2) AS `วันเกิด`,
     MID(p.birth,6,2) AS `เดือนเกิด`,
     YEAR(p.birth)    AS `ปีเกิด`,
