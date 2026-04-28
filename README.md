@@ -1,47 +1,28 @@
-# HOSxP Data Pipeline (SQL-Based) 🗄️
+# HOSxP Data Pipeline
 
-A collection of optimized SQL scripts and stored procedures designed to automate the ETL (Extract, Transform, Load) process within a **HOSxP** environment. This project focuses on high-performance data movement directly at the database level, ensuring data consistency and speed.
+A SQL-based data pipeline for extracting, analyzing, and transforming healthcare data from a legacy HOSxP hospital information system.
 
-## 🛠️ Data Engineering Workflow
+## Overview
+This project focuses on working with a legacy healthcare database system (HOSxP) to understand relational structures and support data extraction workflows for analytics and reporting.
 
-- **Direct Extraction**: Utilizes SQL queries to pull data from core HOSxP tables (e.g., `patient`, `ovst`, `ipt`, `opitemrece`).
-- **Data Transformation**: SQL views and procedures that clean raw medical data and format it for reporting (HDX, 43 Folders, or custom BI).
-- **Automated Sync**: Optimized for scheduled jobs (MySQL Event Scheduler or SQL Server Agent) to keep analytical tables up to date.
-- **Performance Tuning**: Includes indexing strategies to handle large-scale healthcare datasets without impacting production performance.
+## Core Data Scope
+Worked with key HOSxP tables including:
+- patient (demographics)
+- OVST (outpatient visit records)
+- VN_STAT (visit statistics)
+- OPD_SCREENS (clinical screening data)
 
-## 📂 Repository Structure
+## Key Work
+- Analyzed relational schema across 50+ tables
+- Extracted and transformed large-scale healthcare data (~1,000,000+ records)
+- Built SQL-based queries for data extraction and transformation
+- Supported ETL-style workflows for structured data processing
 
-- `/src/extract/`: SQL scripts for pulling raw data.
-- `/src/transform/`: Logic for cleaning and joining complex HOSxP tables.
-- `/src/load/`: Scripts to populate Data Marts or analytical schemas.
-- `/schema/`: Definition of destination tables.
+## Tech Stack
+SQL • MySQL • Healthcare Data Systems • ETL Concepts
 
-## 🚀 Implementation
+## Impact
+- Improved data extraction workflow efficiency from batch processing (24 hours) to optimized query-based processing (<1 hour)
 
-1. **Database Connection**: Ensure you have read-access to the HOSxP production database (usually MySQL).
-2. **Setup Destination**: Run the schema scripts located in `/schema` to create your target tables.
-3. **Execute Pipeline**: 
-   - Run the transformation scripts to process historical data.
-   - Set up the stored procedures as a **MySQL Event** for daily or real-time synchronization.
-
-## 🔍 Example Transformation
-This pipeline automates the conversion of complex HOSxP codes into human-readable formats:
-```sql
--- Example logic for appointment status transformation
-CREATE OR REPLACE VIEW v_patient_summary AS
-SELECT 
-    hn, 
-    fname, 
-    lname,
-    DATE(vstdate) as visit_date
-FROM patient 
-JOIN ovst USING (hn);
-```
-
-## 🛡️ Security & PDPA
-This pipeline follows strict healthcare data protocols:
-- **No PII Leaks**: Scripts are designed to exclude or mask sensitive fields during the transfer to non-secure environments.
-- **Read-Only Source**: All extraction scripts are optimized for `SELECT` operations to ensure zero downtime for the HOSxP application.
-
-## 📄 License
-MIT License
+## Domain
+Healthcare data engineering (Hospital Information System - HOSxP)
