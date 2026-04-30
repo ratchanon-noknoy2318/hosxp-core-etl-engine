@@ -1,9 +1,9 @@
 ## Data Investigation Workflow
 
-This project was driven by self-directed clinical data interpretation and iterative SQL-based analysis:
+This project was driven by iterative clinical data interpretation and SQL-based analysis:
 
-- Developed domain understanding by independently studying healthcare workflows (e.g., DTX usage and clinical processes)  
-- Explored HOSxP database schema to identify relevant tables, fields, and relationships  
-- Built SQL queries and applied structured reasoning to form and test hypotheses on data relationships  
-- Used LLM-assisted analysis to support exploration and refinement of data logic  
-- Cross-checked outputs against available system data and schema constraints to ensure consistency in results  
+- Gathered real-world context from clinical staff (e.g., DTX usage and healthcare workflows)
+- Mapped domain knowledge to the HOSxP database by exploring schemas, tables, and field relationships
+- Formulated hypotheses and validated them through structured SQL queries and data analysis
+- Used LLM-assisted analysis to support exploration and refine understanding of complex data relationships
+- Iteratively confirmed findings with domain experts to ensure alignment between system data and real clinical processes
